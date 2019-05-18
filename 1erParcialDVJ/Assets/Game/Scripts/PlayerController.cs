@@ -25,4 +25,12 @@ public class PlayerController : MonoBehaviour
 
         transform.position += movement*Time.deltaTime*speed;
     }
+
+    bool Walkable(Vector3 dir)
+    {
+
+       
+
+        return true;
+    }
 }
