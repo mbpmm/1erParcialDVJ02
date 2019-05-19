@@ -50,5 +50,4 @@ public class Bomb : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         Destroy(gameObject, .3f); 
     }
-
 }

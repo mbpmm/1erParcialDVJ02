@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 10800000}
   - component: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,9 +95,11 @@ GameObject:
   m_Component:
   - component: {fileID: 400004}
   - component: {fileID: 11400002}
-  m_Layer: 0
+  - component: {fileID: 9205269541403631775}
+  - component: {fileID: 8500269585567766050}
+  m_Layer: 12
   m_Name: Exploson8
-  m_TagString: Untagged
+  m_TagString: Explosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +132,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b9b11ad00a01e44aa1c4d1ab3954eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &9205269541403631775
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.72, y: 1.73, z: 2.75}
+  m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &8500269585567766050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff019a4a6ded1874d98854e6c9618b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 1.5
 --- !u!1 &100006
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +169,7 @@ GameObject:
   - component: {fileID: 400006}
   - component: {fileID: 19800002}
   - component: {fileID: 19900002}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Exposion-[Explosion1]
   m_TagString: Untagged
   m_Icon: {fileID: 0}

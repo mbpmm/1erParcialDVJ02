@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position += Vector3.right * speed * Time.deltaTime;
             }
-            if (Input.GetKeyDown(KeyCode.Space) )
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) )
             {
                 DropBomb();
             }
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            if (layerHitted == "Wall" || layerHitted == "Bomb")
+            if (layerHitted == "Wall" || layerHitted == "Destroyable")
             {
                 canMoveUp = false;
             }
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            if (layerHitted == "Wall" || layerHitted == "Bomb")
+            if (layerHitted == "Wall" || layerHitted == "Destroyable")
             {
                 canMoveDown = false;
             }
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            if (layerHitted == "Wall" || layerHitted == "Bomb")
+            if (layerHitted == "Wall" || layerHitted == "Destroyable")
             {
                 canMoveLeft = false;
             }
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            if (layerHitted == "Wall" || layerHitted == "Bomb")
+            if (layerHitted == "Wall" || layerHitted == "Destroyable")
             {
                 canMoveRight = false;
             }
