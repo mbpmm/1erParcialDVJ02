@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     const float speed = 2f;
-    public LayerMask raycastLayer;
-    const float rayDistance = 0.52f;
+    public LayerMask RaycastLayer;
+    const float RayDistance = 0.52f;
     public GameObject bomb;
 
     private bool canMoveLeft;
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space) )
             {
-                Instantiate(bomb, transform.position - Vector3.up*0.5f, bomb.transform.rotation) ;
+                DropBomb();
             }
         }
 
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
         string layerHitted;
-        if (Physics.Raycast(transform.position, Vector3.forward, out hit, rayDistance, raycastLayer))
+        if (Physics.Raycast(transform.position, Vector3.forward, out hit, RayDistance, RaycastLayer))
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
@@ -65,10 +65,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(transform.position, Vector3.forward * rayDistance, Color.yellow);
+            Debug.DrawRay(transform.position, Vector3.forward * RayDistance, Color.yellow);
             canMoveUp = true;
         }
-        if (Physics.Raycast(transform.position, Vector3.back, out hit, rayDistance, raycastLayer))
+        if (Physics.Raycast(transform.position, Vector3.back, out hit, RayDistance, RaycastLayer))
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
@@ -79,10 +79,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(transform.position, Vector3.back * rayDistance, Color.yellow);
+            Debug.DrawRay(transform.position, Vector3.back * RayDistance, Color.yellow);
             canMoveDown = true;
         }
-        if (Physics.Raycast(transform.position, Vector3.left, out hit, rayDistance, raycastLayer))
+        if (Physics.Raycast(transform.position, Vector3.left, out hit, RayDistance, RaycastLayer))
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
@@ -93,10 +93,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(transform.position, Vector3.left * rayDistance, Color.yellow);
+            Debug.DrawRay(transform.position, Vector3.left * RayDistance, Color.yellow);
             canMoveLeft = true;
         }
-        if (Physics.Raycast(transform.position, Vector3.right, out hit, rayDistance, raycastLayer))
+        if (Physics.Raycast(transform.position, Vector3.right, out hit, RayDistance, RaycastLayer))
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
@@ -107,8 +107,17 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(transform.position, Vector3.right * rayDistance, Color.yellow);
+            Debug.DrawRay(transform.position, Vector3.right * RayDistance, Color.yellow);
             canMoveRight = true;
+        }
+    }
+
+    void DropBomb()
+    {
+        if (bomb)
+        {
+            Instantiate(bomb, new Vector3(Mathf.RoundToInt(transform.position.x),
+            bomb.transform.position.y, Mathf.RoundToInt(transform.position.z)), bomb.transform.rotation);
         }
     }
 }

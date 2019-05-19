@@ -3269,8 +3269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RaycastLayer:
     serializedVersion: 2
-    m_Bits: 512
-  bomb: {fileID: 0}
+    m_Bits: 1536
+  bomb: {fileID: 4695362225909898911, guid: 4d321539e77799449b2fe6f74e9d61db, type: 3}
 --- !u!54 &635545360
 Rigidbody:
   m_ObjectHideFlags: 0
