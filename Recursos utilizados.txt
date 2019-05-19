@@ -1,0 +1,8 @@
+ void DropBomb()
+    {
+        if (bomb)
+        {
+            Instantiate(bomb, new Vector3(Mathf.RoundToInt(transform.position.x),
+            bomb.transform.position.y, Mathf.RoundToInt(transform.position.z)), bomb.transform.rotation);
+        }
+    }

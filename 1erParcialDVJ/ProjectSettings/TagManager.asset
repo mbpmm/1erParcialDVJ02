@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Explosion
+  - Destroyable
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Bomb
   - Destroyable
   - Explosion
-  - 
+  - Enemy
   - 
   - 
   - 
