@@ -130,26 +130,6 @@ public class EnemyFSM : MonoBehaviour
     {
         state = es;
     }
-    //void CanEnemyMove()
-    //{
-    //    switch (state)
-    //    {
-    //        case EnemyState.MovingUp:
-    //            SetState(EnemyState.MovingDown);
-    //            break;
-    //        case EnemyState.MovingDown:
-    //            SetState(EnemyState.MovingUp);
-    //            break;
-    //        case EnemyState.MovingLeft:
-    //            SetState(EnemyState.MovingRight);
-    //            break;
-    //        case EnemyState.MovingRight:
-    //            SetState(EnemyState.MovingLeft);
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //}
 
     void CanMove()
     {
@@ -159,7 +139,7 @@ public class EnemyFSM : MonoBehaviour
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            if (layerHitted == "Wall" || layerHitted == "Destroyable" || layerHitted == "Bomb")
+            if (layerHitted == "Wall" || layerHitted == "Destroyable" || layerHitted == "Bomb" || layerHitted == "Enemy")
             {
                 canMoveUp = false;
             }
@@ -173,7 +153,7 @@ public class EnemyFSM : MonoBehaviour
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            if (layerHitted == "Wall" || layerHitted == "Destroyable" || layerHitted == "Bomb")
+            if (layerHitted == "Wall" || layerHitted == "Destroyable" || layerHitted == "Bomb" || layerHitted == "Enemy")
             {
                 canMoveDown = false;
             }
@@ -187,7 +167,7 @@ public class EnemyFSM : MonoBehaviour
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            if (layerHitted == "Wall" || layerHitted == "Destroyable" || layerHitted == "Bomb")
+            if (layerHitted == "Wall" || layerHitted == "Destroyable" || layerHitted == "Bomb" || layerHitted == "Enemy")
             {
                 canMoveLeft = false;
             }
@@ -201,7 +181,7 @@ public class EnemyFSM : MonoBehaviour
         {
             layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            if (layerHitted == "Wall" || layerHitted == "Destroyable" || layerHitted == "Bomb")
+            if (layerHitted == "Wall" || layerHitted == "Destroyable" || layerHitted == "Bomb" || layerHitted == "Enemy")
             {
                 canMoveRight = false;
             }
@@ -212,12 +192,4 @@ public class EnemyFSM : MonoBehaviour
             canMoveRight = true;
         }
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "Obstacle") 
-    //    {
-    //        CanEnemyMove();
-    //    }
-    //}
 }

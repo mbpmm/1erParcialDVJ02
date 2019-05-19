@@ -5,6 +5,7 @@ using UnityEngine;
 public class WallsGenerator : MonoBehaviour
 {
     public GameObject wall;
+    public GameObject wallsParent;
 
     private int posMin;
     private int posMax;
@@ -32,6 +33,7 @@ public class WallsGenerator : MonoBehaviour
             Vector3 pos = new Vector3(posX, 0, posZ);
             GameObject auxWalls;
             auxWalls = Instantiate(wall, pos, Quaternion.identity);
+            auxWalls.transform.SetParent(wallsParent.transform);
             posX = 0;
             posZ = 0;
         }
