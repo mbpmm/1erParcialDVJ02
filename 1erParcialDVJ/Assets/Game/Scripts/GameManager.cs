@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
-    public float points;
+    public int points;
     public float enemiesAlive;
 
     private bool gameOver;
@@ -14,10 +14,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     private GameObject player;
     private Player playerManager;
     private GameObject trapDoor;
+    string key = "123qwe";
 
     public override void Awake()
     {
         base.Awake();
+        points = 0;
         enemies = GameObject.Find("EnemyManager");
         enemiesManager = enemies.GetComponent<EnemyManager>();
         player = GameObject.Find("Player");
@@ -28,12 +30,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Cant "+enemiesManager.cantEnemies);
-        Debug.Log(playerManager.onExit);
         if (enemiesManager.cantEnemies <= 0&&playerManager.onExit)
         {
             gameOver = true;
             enemiesManager.cantEnemies++;
+        }
+        if (playerManager.lives<=0)
+        {
+            playerManager.lives++;
+            GoToFinalScene();
         }
         if (gameOver)
         {
@@ -44,6 +49,14 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     void GoToFinalScene()
     {
+        if (!PlayerPrefs.HasKey(key))
+        {
+            PlayerPrefs.SetInt(key, points);
+        }
+        else if (PlayerPrefs.GetInt(key) < points)
+        {
+            PlayerPrefs.SetInt(key, points);
+        }
         SceneManager.LoadScene("FinalScene");
     }
 
