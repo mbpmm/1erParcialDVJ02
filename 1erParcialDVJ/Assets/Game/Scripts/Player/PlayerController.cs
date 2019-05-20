@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     const float RayDistance = 0.52f;
     public GameObject bomb;
 
+    private bool canDrop;
+    private float timer;
     private bool canMoveLeft;
     private bool canMoveRight;
     private bool canMoveUp;
@@ -19,10 +21,20 @@ public class PlayerController : MonoBehaviour
         canMoveRight = true;
         canMoveUp = true;
         canMoveDown = true;
+        canDrop = true;
     }
 
     void FixedUpdate()
     {
+        if (!canDrop)
+        {
+            timer += Time.deltaTime;
+            if (timer>2.5f)
+            {
+                canDrop = true;
+                timer = 0;
+            }
+        }
         if (Input.anyKey)
         {
             CanMove();
@@ -42,9 +54,10 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position += Vector3.right * speed * Time.deltaTime;
             }
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) )
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && canDrop )
             {
                 DropBomb();
+                canDrop = false;
             }
         }
 
