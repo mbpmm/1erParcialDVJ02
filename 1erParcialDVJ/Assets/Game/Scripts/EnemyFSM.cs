@@ -31,101 +31,58 @@ public class EnemyFSM : MonoBehaviour
         canMoveRight = true;
         canMoveUp = true;
         canMoveDown = true;
+        state = (EnemyState)Random.Range(0, 3);
     }
     private void FixedUpdate()
     {
         CanMove();
-
         switch (state)
         {
             case EnemyState.MovingUp:
                 if (canMoveUp)
                 {
-                    t += Time.deltaTime;
                     transform.position = transform.position + transform.forward * speed * Time.deltaTime;
-                    if (t > 3)
-                    {
-                        state = (EnemyState)Random.Range(0, 3);
-                        SetState(state);
-                        t = 0;
-                    }
                 }
                 else
                 {
-                    state = (EnemyState)Random.Range(0, 3);
-                    SetState(state);
+                    SetState(EnemyState.MovingDown);
                 }
                 break;
             case EnemyState.MovingDown:
                 if (canMoveDown)
                 {
-                    t += Time.deltaTime;
                     transform.position = transform.position + transform.forward * -speed * Time.deltaTime;
-
-                    if (t > 3)
-                    {
-                        state = (EnemyState)Random.Range(0, 3);
-                        SetState(state);
-                        t = 0;
-                    }
                 }
                 else
                 {
-                    state = (EnemyState)Random.Range(0, 3);
-                    SetState(state);
+                    SetState(EnemyState.MovingUp);
                 }
                 
                 break;
             case EnemyState.MovingRight:
                 if (canMoveRight)
                 {
-                    t += Time.deltaTime;
                     transform.position = transform.position + transform.right * speed * Time.deltaTime;
-                    if (t > 3)
-                    {
-                        state = (EnemyState)Random.Range(0, 3);
-                        SetState(state);
-                        t = 0;
-                    }
                 }
                 else
                 {
-                    state = (EnemyState)Random.Range(0, 3);
-                    SetState(state);
+                    SetState(EnemyState.MovingLeft);
                 }
                 break;
             case EnemyState.MovingLeft:
                 if (canMoveLeft)
                 {
-                    t += Time.deltaTime;
                     transform.position = transform.position + transform.right * -speed * Time.deltaTime;
-                    if (t > 3)
-                    {
-                        state = (EnemyState)Random.Range(0, 3);
-                        SetState(state);
-                        t = 0;
-                    }
                 }
                 else
                 {
-                    state = (EnemyState)Random.Range(0, 3);
-                    SetState(state);
+                    SetState(EnemyState.MovingRight);
                 }
                 break;
             default:
                 break;
         }
     }
-
-    private void NextState()
-    {
-        t = 0;
-        int intState = (int)state;
-        intState++;
-        intState = intState % ((int)EnemyState.Last);
-        SetState((EnemyState)intState);
-    }
-
     private void SetState(EnemyState es)
     {
         state = es;
